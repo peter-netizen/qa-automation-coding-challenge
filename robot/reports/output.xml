@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.9.6 on darwin)" generated="2024-03-21T01:26:12.919391" rpa="false" schemaversion="5">
+<suite id="s1" name="Repos Search And Select" source="/Users/imac/react-app/qaauto/qa-automation-coding-challenge/robot/repos_search_and_select.robot">
+<test id="s1-t1" name="Loading website" line="16">
+<kw name="Open Browser" owner="Selenium2Library">
+<msg time="2024-03-21T01:26:16.226408" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${UrlSite}</arg>
+<arg>${Browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-21T01:26:16.220893" elapsed="96.115896"/>
+</kw>
+<doc>scenario1_loading website</doc>
+<tag>s1_load</tag>
+<status status="PASS" start="2024-03-21T01:26:16.193055" elapsed="96.148628"/>
+</test>
+<test id="s1-t2" name="Verifing title on home page" line="21">
+<kw name="Title Should Be" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:53.885313" level="INFO">Page title is 'Get Github Repos'.</msg>
+<arg>${titlehome}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2024-03-21T01:27:52.354482" elapsed="1.531321"/>
+</kw>
+<kw name="Log Title" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:53.901844" level="INFO">Get Github Repos</msg>
+<doc>Logs and returns the title of the current page.</doc>
+<status status="PASS" start="2024-03-21T01:27:53.887010" elapsed="0.015240"/>
+</kw>
+<status status="PASS" start="2024-03-21T01:27:52.344447" elapsed="1.559208"/>
+</test>
+<test id="s1-t3" name="Type username" line="25">
+<kw name="Wait Until Element Is Visible" owner="Selenium2Library">
+<arg>id:username</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-21T01:27:53.908866" elapsed="0.113360"/>
+</kw>
+<kw name="Input Text" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:54.025613" level="INFO">Typing text 'peter-netizen' into text field 'id:username'.</msg>
+<arg>id:username</arg>
+<arg>${repouser}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-21T01:27:54.023756" elapsed="1.590006"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-21T01:27:57.617998" level="INFO">Slept 2 seconds.</msg>
+<arg>${segundos}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-21T01:27:55.615036" elapsed="2.003390"/>
+</kw>
+<kw name="Press Keys" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:57.623497" level="INFO">Sending key(s) ('RETURN',) to id:username element.</msg>
+<msg time="2024-03-21T01:27:57.978653" level="INFO">Pressing special key RETURN to element.</msg>
+<msg time="2024-03-21T01:27:57.979042" level="INFO">Releasing special key RETURN.</msg>
+<arg>id:username</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2024-03-21T01:27:57.619685" elapsed="0.406698"/>
+</kw>
+<doc>scenario1_typing username</doc>
+<tag>repos_search</tag>
+<status status="PASS" start="2024-03-21T01:27:53.906216" elapsed="4.121569"/>
+</test>
+<test id="s1-t4" name="Verifying results" line="33">
+<kw name="Wait Until Element Is Visible" owner="Selenium2Library">
+<arg>class:repo-amount</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-21T01:27:58.034097" elapsed="0.874953"/>
+</kw>
+<doc>scenario1_results are displayed</doc>
+<tag>repos_found</tag>
+<status status="PASS" start="2024-03-21T01:27:58.029387" elapsed="0.880395"/>
+</test>
+<test id="s1-t5" name="Confirm results" line="38">
+<kw name="Get Element Count" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:58.952050" level="INFO">${linkscounter} = 4</msg>
+<var>${linkscounter}</var>
+<arg>xpath://a</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2024-03-21T01:27:58.912877" elapsed="0.039410"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>message=total de links</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-03-21T01:27:58.953702" elapsed="0.001129"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${linkscounter}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-03-21T01:27:58.955912" elapsed="0.001218"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2024-03-21T01:27:58.960172" level="INFO">@{LinkItems} = [ ]</msg>
+<var>@{LinkItems}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2024-03-21T01:27:58.958242" elapsed="0.002144"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Text" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:59.073886" level="INFO">${linkText} = qa-automation-coding-challenge</msg>
+<var>${linkText}</var>
+<arg>xpath:(//a)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-21T01:27:58.968185" elapsed="0.105947"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>there is a repo with that name</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.105664" elapsed="0.001803"/>
+</kw>
+<arg>$targetrepo in $linkText</arg>
+<arg>log to console</arg>
+<arg>there is a repo with that name</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.075181" elapsed="0.033013"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2024-03-21T01:27:58.967106" elapsed="0.141459"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:59.188742" level="INFO">${linkText} = qabootcamp</msg>
+<var>${linkText}</var>
+<arg>xpath:(//a)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.111880" elapsed="0.077012"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>there is a repo with that name</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.190827" elapsed="0.000771"/>
+</kw>
+<arg>$targetrepo in $linkText</arg>
+<arg>log to console</arg>
+<arg>there is a repo with that name</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.189478" elapsed="0.002512"/>
+</kw>
+<var name="${i}">2</var>
+<status status="PASS" start="2024-03-21T01:27:59.110037" elapsed="0.082163"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:59.264827" level="INFO">${linkText} = ss-testing</msg>
+<var>${linkText}</var>
+<arg>xpath:(//a)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.193667" elapsed="0.072278"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>$targetrepo in $linkText</arg>
+<arg>log to console</arg>
+<arg>there is a repo with that name</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.267102" elapsed="0.001331"/>
+</kw>
+<var name="${i}">3</var>
+<status status="PASS" start="2024-03-21T01:27:59.192813" elapsed="0.076059"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>${linkscounter}</value>
+<status status="PASS" start="2024-03-21T01:27:58.962011" elapsed="0.307169"/>
+</for>
+<doc>scenario1_counting results</doc>
+<tag>s1_count</tag>
+<status status="PASS" start="2024-03-21T01:27:58.911102" elapsed="0.359086"/>
+</test>
+<test id="s1-t6" name="Click first" line="55">
+<kw name="Click Link" owner="Selenium2Library">
+<msg time="2024-03-21T01:27:59.276696" level="INFO">Clicking link 'partial link:qa'.</msg>
+<arg>partial link:${targetrepo}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.275199" elapsed="0.374943"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-21T01:28:01.653998" level="INFO">Slept 2 seconds.</msg>
+<arg>${segundos}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-21T01:27:59.651712" elapsed="2.003108"/>
+</kw>
+<doc>scenario1_selecting first match</doc>
+<tag>s1_verify</tag>
+<status status="PASS" start="2024-03-21T01:27:59.272241" elapsed="2.383326"/>
+</test>
+<test id="s1-t7" name="End testing" line="62">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-03-21T01:28:11.659773" level="INFO">Slept 10 seconds.</msg>
+<arg>10</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-03-21T01:28:01.658694" elapsed="10.001443"/>
+</kw>
+<kw name="Close Browser" owner="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-03-21T01:28:11.660890" elapsed="1.453852"/>
+</kw>
+<doc>endoftesting</doc>
+<tag>endtest</tag>
+<status status="PASS" start="2024-03-21T01:28:01.656445" elapsed="11.460345"/>
+</test>
+<status status="PASS" start="2024-03-21T01:26:12.930340" elapsed="120.190231"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">endtest</stat>
+<stat pass="1" fail="0" skip="0">repos_found</stat>
+<stat pass="1" fail="0" skip="0">repos_search</stat>
+<stat pass="1" fail="0" skip="0">s1_count</stat>
+<stat pass="1" fail="0" skip="0">s1_load</stat>
+<stat pass="1" fail="0" skip="0">s1_verify</stat>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Repos Search And Select">Repos Search And Select</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
